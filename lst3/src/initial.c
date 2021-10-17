@@ -6,21 +6,23 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "env.h"
 #include "memory.h"
 #include "names.h"
 
-int initial = 1;		/* making initial image */
+int initial = 1;        /* making initial image */
 
 void goDoIt(char *text);
+
 void makeInitialImage();
+
 boolean parse(object method, char *text, boolean savetext);
+
 boolean execute(object aProcess, int maxsteps);
+
 void setInstanceVariables(object aClass);
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     char methbuf[100];
     int i;
 
@@ -29,10 +31,9 @@ int main(int argc, char **argv)
     initCommonSymbols();
 
     for (i = 1; i < argc; i++) {
-	fprintf(stderr, "%s:\n", argv[i]);
-	ignore sprintf(methbuf,
-		       "x <120 1 '%s' 'r'>. <123 1>. <121 1>", argv[i]);
-	goDoIt(methbuf);
+        fprintf(stderr, "%s:\n", argv[i]);
+        ignore sprintf(methbuf, "x <120 1 '%s' 'r'>. <123 1>. <121 1>", argv[i]);
+        goDoIt(methbuf);
     }
 
     /* when we are all done looking at the arguments, do initialization */
@@ -47,7 +48,7 @@ int main(int argc, char **argv)
 }
 
 void goDoIt(text)
-char *text;
+        char *text;
 {
     object process, stack, method;
 
@@ -67,25 +68,24 @@ char *text;
     basicAtPut(process, linkPtrInProcess, newInteger(2));
 
     /* put argument on stack */
-    basicAtPut(stack, 1, nilobj);	/* argument */
+    basicAtPut(stack, 1, nilobj);    /* argument */
     /* now make a linkage area in stack */
-    basicAtPut(stack, 2, nilobj);	/* previous link */
-    basicAtPut(stack, 3, nilobj);	/* context object (nil = stack) */
-    basicAtPut(stack, 4, newInteger(1));	/* return point */
-    basicAtPut(stack, 5, method);	/* method */
-    basicAtPut(stack, 6, newInteger(1));	/* byte offset */
+    basicAtPut(stack, 2, nilobj);    /* previous link */
+    basicAtPut(stack, 3, nilobj);    /* context object (nil = stack) */
+    basicAtPut(stack, 4, newInteger(1));    /* return point */
+    basicAtPut(stack, 5, method);    /* method */
+    basicAtPut(stack, 6, newInteger(1));    /* byte offset */
 
     /* now go execute it */
     while (execute(process, 15000))
-	fprintf(stderr, "..");
+        fprintf(stderr, "..");
 }
 
 /*
 	there is a sort of chicken and egg problem with regards to making
 	the initial image
 */
-void makeInitialImage()
-{
+void makeInitialImage() {
     object hashTable;
     object symbolObj, symbolClass, classClass;
 
@@ -112,7 +112,7 @@ void makeInitialImage()
     setClass(nilobj, newClass("UndefinedObject"));
     ignore newClass("String");
     nameTableInsert(symbols, strHash("symbols"), newSymbol("symbols"),
-		    symbols);
+                    symbols);
 
     /* finally at least make true and false to be distinct */
     trueobj = newSymbol("true");

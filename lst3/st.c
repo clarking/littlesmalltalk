@@ -12,13 +12,13 @@
 #include "memory.h"
 #include "names.h"
 
-int initial = 0;		/* not making initial image */
+int initial = 0;        /* not making initial image */
 
 extern int objectCount();
+
 boolean execute(object aProcess, int maxsteps);
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     FILE *fp;
     object firstProcess;
     char *p, buffer[120];
@@ -29,26 +29,27 @@ int main(int argc, char **argv)
     p = buffer;
 
     if (argc != 1)
-	p = argv[1];
+        p = argv[1];
 
     fp = fopen(p, "r");
 
     if (fp == NULL) {
-	strcpy(buffer, "/usr/share/lst3/systemImage");
-	fp = fopen(p, "r");
-	if (fp == NULL) {
-		sysError("cannot open image", p);
-		exit(1);
-	}
+        strcpy(buffer, "./systemImage");
+        fp = fopen(p, "r");
+        if (fp == NULL) {
+            sysError("cannot open image", p);
+            exit(1);
+        }
     }
+
     imageRead(fp);
     initCommonSymbols();
 
     firstProcess = globalSymbol("systemProcess");
     if (firstProcess == nilobj) {
-	sysError("no initial process", "in image");
-	exit(1);
-	return 1;
+        sysError("no initial process", "in image");
+        exit(1);
+        return 1;
     }
 
     printf("Little Smalltalk, Version 3.1\n");
