@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 set(CMAKE_C_STANDARD 11)
 project(lst5 C )
 
-set(CMAKE_BINARY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/build/)
+set(CMAKE_BINARY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/bin/)
 
 
 #

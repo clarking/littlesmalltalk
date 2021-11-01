@@ -124,8 +124,7 @@ int main(int argc, char **argv) {
     for (i = 1; i < argc; i++) {
         if (strcmp(argv[i], "-v") == 0) {
             printf("Little Smalltalk, version 5.0 (Alpha)\n");
-            printf("size of int: %lu \n", sizeof(int));
-            printf("size of long: %lu \n", sizeof(long));
+            exit(0);
         }
         else if (strcmp(argv[i], "-s") == 0) {
             staticSize = atoi(argv[++i]);
@@ -180,7 +179,6 @@ int main(int argc, char **argv) {
         case 2:
             printf("User defined return\n");
             break;
-
         case 3:
             printf("can't find method in call\n");
             aProcess = rootStack[--rootTop];

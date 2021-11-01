@@ -17,12 +17,12 @@ the original introduction.
 What Little Smalltalk is, and more importantly, what it isn't
 
 First and foremost, let me say at the beginning in as LOUD a voice as I can
-that Little Smalltalk is NOT a smalltalk-80 system. If you want a real
+that Little Smalltalk is NOT a Smalltalk-80 system. If you want a real
 Smalltalk system go buy one from ParcPlace, Digitalk, IBM, or whomever.
 
 Little Smalltalk is a sort of fun experiment in building a minimal
 smalltalk system.  The source code for the interpreter is less than 1800
-lines of code.  The image consists of less than 4000 objects.  It runs
+lines of code.  The image consists of less than 5000 objects.  It runs
 in almost no memory.  In short, it's small, it's reasonably fast, it's easy
 to understand, and easy to modify.
 
