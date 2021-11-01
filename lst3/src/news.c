@@ -12,44 +12,43 @@
 #include "memory.h"
 #include "names.h"
 
-static object arrayClass = nilobj;	/* the class Array */
-static object intClass = nilobj;	/* the class Integer */
-static object stringClass = nilobj;	/* the class String */
-static object symbolClass = nilobj;	/* the class Symbol */
+static object arrayClass = nilobj;    /* the class Array */
+static object intClass = nilobj;    /* the class Integer */
+static object stringClass = nilobj;    /* the class String */
+static object symbolClass = nilobj;    /* the class Symbol */
 
-void ncopy(p, q, n)		/* ncopy - copy exactly n bytes from place to place */
-register char *p, *q;
-register int n;
+void ncopy(p, q, n)        /* ncopy - copy exactly n bytes from place to place */
+        register char *p, *q;
+        register int n;
 {
     for (; n > 0; n--)
-	*p++ = *q++;
+        *p++ = *q++;
 }
 
-object getClass(obj)		/* getClass - get the class of an object */
-register object obj;
+object getClass(obj)        /* getClass - get the class of an object */
+        register object obj;
 {
     if (isInteger(obj)) {
-	if (intClass == nilobj)
-	    intClass = globalSymbol("Integer");
-	return (intClass);
+        if (intClass == nilobj)
+            intClass = globalSymbol("Integer");
+        return (intClass);
     }
     return (classField(obj));
 }
 
 object newArray(size)
-int size;
+        int size;
 {
     object newObj;
 
     newObj = allocObject(size);
     if (arrayClass == nilobj)
-	arrayClass = globalSymbol("Array");
+        arrayClass = globalSymbol("Array");
     setClass(newObj, arrayClass);
     return newObj;
 }
 
-object newBlock()
-{
+object newBlock() {
     object newObj;
 
     newObj = allocObject(blockSize);
@@ -58,7 +57,7 @@ object newBlock()
 }
 
 object newByteArray(size)
-int size;
+        int size;
 {
     object newobj;
 
@@ -68,7 +67,7 @@ int size;
 }
 
 object newChar(value)
-int value;
+        int value;
 {
     object newobj;
 
@@ -79,7 +78,7 @@ int value;
 }
 
 object newClass(name)
-char *name;
+        char *name;
 {
     object newObj, nameObj;
 
@@ -97,23 +96,23 @@ char *name;
 }
 
 object copyFrom(obj, start, size)
-object obj;
-int start, size;
+        object obj;
+        int start, size;
 {
     object newObj;
     int i;
 
     newObj = newArray(size);
     for (i = 1; i <= size; i++) {
-	basicAtPut(newObj, i, basicAt(obj, start));
-	start++;
+        basicAtPut(newObj, i, basicAt(obj, start));
+        start++;
     }
     return newObj;
 }
 
 object newContext(link, method, args, temp)
-int link;
-object method, args, temp;
+        int link;
+        object method, args, temp;
 {
     object newObj;
 
@@ -127,7 +126,7 @@ object method, args, temp;
 }
 
 object newDictionary(size)
-int size;
+        int size;
 {
     object newObj;
 
@@ -138,7 +137,7 @@ int size;
 }
 
 object newFloat(d)
-double d;
+        double d;
 {
     object newObj;
 
@@ -149,7 +148,7 @@ double d;
 }
 
 double floatValue(o)
-object o;
+        object o;
 {
     double d;
 
@@ -158,7 +157,7 @@ object o;
 }
 
 object newLink(key, value)
-object key, value;
+        object key, value;
 {
     object newObj;
 
@@ -169,8 +168,7 @@ object key, value;
     return newObj;
 }
 
-object newMethod()
-{
+object newMethod() {
     object newObj;
 
     newObj = allocObject(methodSize);
@@ -179,31 +177,31 @@ object newMethod()
 }
 
 object newStString(value)
-char *value;
+        char *value;
 {
     object newObj;
 
     newObj = allocStr(value);
     if (stringClass == nilobj)
-	stringClass = globalSymbol("String");
+        stringClass = globalSymbol("String");
     setClass(newObj, stringClass);
     return (newObj);
 }
 
 object newSymbol(str)
-char *str;
+        char *str;
 {
     object newObj;
 
     /* first see if it is already there */
     newObj = globalKey(str);
     if (newObj)
-	return newObj;
+        return newObj;
 
     /* not found, must make */
     newObj = allocStr(str);
     if (symbolClass == nilobj)
-	symbolClass = globalSymbol("Symbol");
+        symbolClass = globalSymbol("Symbol");
     setClass(newObj, symbolClass);
     nameTableInsert(symbols, strHash(str), newObj, nilobj);
     return newObj;
