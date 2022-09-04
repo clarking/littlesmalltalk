@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pushd bootstrap/
+../build/parable --bootstrap basic.st mag.st collect.st file.st mult.st tty.st
+mv systemImage ../build/systemImage
+popd
