@@ -1,7 +1,0 @@
-SubDir TOP src lstcore ;
-
-
-Library liblstcore.a :
-  lst_imgio.c
-  lst_interp.c
-;
