@@ -1,9 +1,9 @@
 # Little Smalltalk
 
-This contains the implementations of A Little Smalltalk from the
-former "A Little Smalltalk" project. I'm not actively working on
-any of these now, but keep the sources here to help keep this
-historical system from being lost.
+Archive for implementations of "A Little Smalltalk" from the
+former "A Little Smalltalk" project. 
+
+This repository is not in active development, only sources have been kept here in branches to help this historical system from being lost. 
 
 # Versions
 
@@ -40,12 +40,17 @@ the littlesmalltalk.org website.
 
 This is working on OS X Yosemite as of November 2014.
 
-## smallworld
+## Forks
 
-A Java implementation.
+* K8lst
+
+* Parable
+
+* SmallWorld
 
 # Credits
 
-My thanks go to Timothy Budd for creating this, Danny Reinhold for
-obtaining permissions to release and update these, and Dmitry Geurkov
-for sending me patches to fix several issues with lst1.
+Thanks to Timothy Budd for creating this, Danny Reinhold for
+obtaining permissions to release and update these, Dmitry Geurkov
+for sending me patches to fix several issues with lst1, and everyone
+that made possible to have fun with this little system.
