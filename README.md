@@ -1,51 +1,41 @@
-# Little Smalltalk
+```
+______                      _      _
+| ___ \                    | |    | |
+| |_/ /  __ _  _ __   __ _ | |__  | |  ___
+|  __/  / _` || '__| / _` || '_ \ | | / _ \
+| |    | (_| || |   | (_| || |_) || ||  __/
+\_|     \__,_||_|    \__,_||_.__/ |_| \___|
+===============================================================================
+Parable, a little smalltalk
+```
 
-This contains the implementations of A Little Smalltalk from the
-former "A Little Smalltalk" project. I'm not actively working on
-any of these now, but keep the sources here to help keep this
-historical system from being lost.
+This is a small implementation of Smalltalk. It's based directly on Tim
+Budd's Little Smalltalk, Version 3.
 
-# Versions
+I've reorganized the source and am cleaning it up and making it work on modern
+Unix-like OSes (BSD, Linux, OS X).
 
-## v1
+Goals for remainder of 2022:
 
-The original, and therefore oldest implementation. As of November
-2014, this is working under OS X Yosemite on a 2013 MacBook Air.
+  - Ensure that it builds and runs on major platforms:
 
-## v2
+Supported platforms so far:
+  - Linux - ok (tested on arch64)
+  - OS X - unknown
+  - Windows - unknown
 
-As of November 2014, this partially builds under OS X Yosemite, but
-fails to run.
 
-## v3
+Install instructions for Linux:
 
-This is the version I've done the most work on. I've tested it on
-various Linux and OS X releases.
-
-## v4
-
-A significant rewrite, this is fairly modern and has a significantly
-smaller and simpler implementation.
-
-As of April 2017, this version:
-
-* Works on 64-bit, OS X, and Cygwin (at least it doesn't crash on
-  light testing) and also when compiled with -m32 for 32-bit mode.
-
-## v5
-
-An updated variation of LST v4. This was being worked on by Danny
-Reinhold and others, but has been frozen since a server hack on
-the littlesmalltalk.org website.
-
-This is working on OS X Yosemite as of November 2014.
-
-## smallworld
-
-A Java implementation.
-
-# Credits
-
-My thanks go to Timothy Budd for creating this, Danny Reinhold for
-obtaining permissions to release and update these, and Dmitry Geurkov
-for sending me patches to fix several issues with lst1.
+```console
+git clone https://github.com/clarking/littlesmalltalk.git
+cd littlesmalltalk/forks/parable
+mkdir build
+cd build
+cmake ../
+cmake --build .
+cd ..
+./gen_img
+./run
+```
+-- Aaron Clark
