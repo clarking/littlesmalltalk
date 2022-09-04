@@ -1,4 +1,0 @@
-#!/bin/sh
-pushd build
-./parable systemImage
-popd
